@@ -1,6 +1,6 @@
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { getAllProducts } from "../services/api";
 
 interface IProduct {
   id: String;
@@ -12,6 +12,7 @@ interface IProduct {
 }
 
 export default function Home({ data }: IProduct[]) {
+  console.info(data);
   return (
     <>
       <Head>
@@ -21,14 +22,13 @@ export default function Home({ data }: IProduct[]) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch(
-    "https://5d6da1df777f670014036125.mockapi.io/api/v1/product"
-  );
-  const data = await res.json();
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await getAllProducts();
+
   return {
     props: {
       data,
     },
+    revalidate: 60 * 60 * 24,
   };
 };
