@@ -1,0 +1,61 @@
+.headerContainer {
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  margin: 1rem;
+
+  img {
+    width: 12rem;
+  }
+}
+
+.headerCart {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 150ms ease-in-out;
+  position: relative;
+
+  @media (max-width: 500px) {
+    margin-left: 1.4rem;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  div {
+    text-align: right;
+    margin-right: 1rem;
+
+    @media (max-width: 500px) {
+      display: none;
+    }
+
+    strong {
+      display: block;
+      color: var(--gray-900);
+    }
+  }
+  > span:last-child {
+    background: #01ccff;
+    color: var(--white);
+    font-size: 11px;
+    line-height: 20px;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    position: absolute;
+    right: -2px;
+    top: 10px;
+    display: none;
+
+    @media (max-width: 430px) {
+      display: initial;
+    }
+  }
+}
