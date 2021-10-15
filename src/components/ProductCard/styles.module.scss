@@ -1,2 +1,43 @@
 .productCartContainer {
+  margin: 1rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #a8a8b3;
+
+  img {
+    width: 16rem;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    button {
+      background: #a8a8b3;
+      border: 0;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      margin-top: 1rem;
+
+      display: flex;
+      align-items: center;
+      transition: 180ms ease-in-out;
+
+      &:hover {
+        background-color: darken(#a8a8b3, 15%);
+      }
+      > div:first-child {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem;
+        background: rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    h1 {
+      font-size: 1.2rem;
+    }
+  }
 }
