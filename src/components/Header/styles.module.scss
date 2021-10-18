@@ -39,12 +39,12 @@
 
     strong {
       display: block;
-      color: var(--gray-900);
+      color: #fff;
     }
   }
+
   > span:last-child {
-    background: #01ccff;
-    color: var(--white);
+    color: #fff;
     font-size: 11px;
     line-height: 20px;
     text-align: center;

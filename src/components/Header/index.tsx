@@ -17,7 +17,7 @@ export function Header() {
             <strong>My cart</strong>
             <span>0 Products</span>
           </div>
-          <MdShoppingCart size={38} color="#000" />
+          <MdShoppingCart size={38} color="#fff" />
           <span>0</span>
         </div>
       </Link>

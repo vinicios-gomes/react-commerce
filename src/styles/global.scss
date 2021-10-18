@@ -42,7 +42,11 @@ body {
 }
 
 body {
-  background: linear-gradient(170deg, rgba(255, 255, 255, 1) 0%, #c8c8c8 30%);
+  background: linear-gradient(
+    170deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(187, 205, 229, 1) 30%
+  );
 
   -webkit-font-smoothing: antialiased;
   color: #333;

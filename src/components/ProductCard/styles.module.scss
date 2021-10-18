@@ -1,8 +1,9 @@
 .productCartContainer {
   margin: 1rem;
   padding: 2rem;
-  border-radius: 1rem;
-  border: 0.1rem solid #a8a8b3;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #fff;
 
   img {
     width: 16rem;
@@ -14,8 +15,10 @@
     justify-content: flex-start;
 
     button {
-      background: #a8a8b3;
+      background: rgba(28, 93, 153, 1);
       border: 0;
+      color: #ffffff;
+      font-weight: 550;
       border-radius: 4px;
       overflow: hidden;
       position: relative;
@@ -26,13 +29,18 @@
       transition: 180ms ease-in-out;
 
       &:hover {
-        background-color: darken(#a8a8b3, 15%);
+        background-color: darken(rgb(28, 93, 153), 15%);
       }
+
       > div:first-child {
         display: flex;
         align-items: center;
         padding: 0.75rem;
-        background: rgba(0, 0, 0, 0.1);
+        background: darken(rgb(28, 93, 153), 10%);
+      }
+
+      span {
+        margin-left: 1rem;
       }
     }
 
