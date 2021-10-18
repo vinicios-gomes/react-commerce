@@ -1,6 +1,5 @@
 .headerContainer {
   height: 5rem;
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -49,7 +48,8 @@
   }
 
   > span:last-child {
-    color: #fff;
+    color: #000000;
+    background-color: #ffffff;
     font-size: 11px;
     line-height: 20px;
     text-align: center;
