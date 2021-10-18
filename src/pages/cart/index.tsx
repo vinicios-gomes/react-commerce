@@ -53,10 +53,9 @@ export default function Cart() {
 
         <footer className={style.footer}>
           <button type="submit">Continuar para o check-out</button>
-
           <div>
             <span>Total: </span>
-            <strong>152</strong>
+            <strong>R$ 152,00</strong>
           </div>
         </footer>
       </div>
