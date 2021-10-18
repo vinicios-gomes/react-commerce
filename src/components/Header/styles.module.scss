@@ -9,6 +9,7 @@
 
   img {
     width: 12rem;
+    height: 3.5rem;
     cursor: pointer;
   }
 }
@@ -40,6 +41,10 @@
     strong {
       display: block;
       color: #fff;
+    }
+    span {
+      color: #fff;
+      font-size: 0.9rem;
     }
   }
 
