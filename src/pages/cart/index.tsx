@@ -31,11 +31,11 @@ export default function Cart() {
               <td>
                 <div>
                   <button type="button">
-                    <MdRemoveCircleOutline size={20} color="#fff" />
+                    <MdRemoveCircleOutline size={20} color="#1c5d99" />
                   </button>
                   <input type="text" readOnly value="1" />
                   <button type="button">
-                    <MdAddCircleOutline size={20} color="#fff" />
+                    <MdAddCircleOutline size={20} color="#1c5d99" />
                   </button>
                 </div>
               </td>
@@ -44,12 +44,21 @@ export default function Cart() {
               </td>
               <td>
                 <button type="button">
-                  <MdDelete size={20} color="#fff" />
+                  <MdDelete size={20} color="#1c5d99" />
                 </button>
               </td>
             </tr>
           </tbody>
         </table>
+
+        <footer className={style.footer}>
+          <button type="submit">Continuar para o check-out</button>
+
+          <div>
+            <span>Total: </span>
+            <strong>152</strong>
+          </div>
+        </footer>
       </div>
     </>
   );
