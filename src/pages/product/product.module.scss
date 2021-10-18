@@ -1,0 +1,41 @@
+.container {
+}
+
+.product {
+  display: flex;
+  width: 80%;
+
+  img {
+    max-width: 500px;
+  }
+
+  button {
+    background: rgba(28, 93, 153, 1);
+    border: 0;
+    color: #ffffff;
+    font-weight: 550;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 1rem;
+
+    display: flex;
+    align-items: center;
+    transition: 180ms ease-in-out;
+
+    &:hover {
+      background-color: darken(rgb(28, 93, 153), 15%);
+    }
+
+    > div:first-child {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem;
+      background: darken(rgb(28, 93, 153), 10%);
+    }
+
+    span {
+      margin-left: 1rem;
+    }
+  }
+}
