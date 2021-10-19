@@ -1,4 +1,4 @@
-import { IProduct } from "../pages";
+import { IProduct } from "../pages/product/IProduct";
 
 export const getAllProducts = async () => {
   const data = await fetch(
