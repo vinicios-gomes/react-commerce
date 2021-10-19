@@ -3,6 +3,7 @@ import {
   MdDelete,
   MdRemoveCircleOutline,
 } from "react-icons/md";
+import { formatPrice } from "../../utils/formaters";
 import style from "./cart.module.scss";
 export default function Cart() {
   return (
@@ -26,7 +27,7 @@ export default function Cart() {
               </td>
               <td>
                 <strong>Product Tilte</strong>
-                <span>Price</span>
+                <span>{formatPrice(144.22)}</span>
               </td>
               <td>
                 <div>
@@ -40,7 +41,7 @@ export default function Cart() {
                 </div>
               </td>
               <td>
-                <strong>Subtotal</strong>
+                <strong>{formatPrice(12)}</strong>
               </td>
               <td>
                 <button type="button">
@@ -55,7 +56,7 @@ export default function Cart() {
           <button type="submit">Continuar para o check-out</button>
           <div>
             <span>Total: </span>
-            <strong>R$ 152,00</strong>
+            <strong>{formatPrice(152.0)}</strong>
           </div>
         </footer>
       </div>
