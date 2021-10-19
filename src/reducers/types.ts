@@ -11,6 +11,6 @@ export type ActionType = {
 };
 
 export type ContextType = {
-  globalState: CartGlobalState;
+  cartState: CartGlobalState;
   dispatch: Dispatch<ActionType>;
 };
