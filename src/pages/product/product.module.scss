@@ -1,12 +1,35 @@
 .container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .product {
   display: flex;
-  width: 80%;
+  width: 100%;
+  background: #fff;
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 8px;
 
   img {
     max-width: 500px;
+  }
+}
+
+.description {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  span {
+    font-size: 1.1rem;
+    margin-top: 10px;
   }
 
   button {
@@ -17,7 +40,8 @@
     border-radius: 4px;
     overflow: hidden;
     position: relative;
-    margin-top: 1rem;
+    margin-top: 1.4rem;
+    max-width: 200px;
 
     display: flex;
     align-items: center;
