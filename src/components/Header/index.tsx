@@ -1,9 +1,13 @@
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import { MdShoppingCart } from "react-icons/md";
+import { useContext } from "react";
+import { cartContext } from "../../store/cart";
 
 export function Header() {
-  function handleSidebar(status) {}
+  const { cartState } = useContext(cartContext);
+
+  const totalItemsInCart = cartState.products.length;
 
   return (
     <header className={styles.headerContainer}>
@@ -15,10 +19,10 @@ export function Header() {
         <div className={styles.headerCart}>
           <div>
             <strong>My cart</strong>
-            <span>0 Products</span>
+            <span>{totalItemsInCart} Products</span>
           </div>
           <MdShoppingCart size={38} color="#fff" />
-          <span>0</span>
+          <span>{totalItemsInCart}</span>
         </div>
       </Link>
     </header>
