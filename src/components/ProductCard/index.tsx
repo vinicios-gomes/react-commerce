@@ -5,8 +5,15 @@ import { MdAddShoppingCart, MdInfoOutline } from "react-icons/md";
 import { useContext } from "react";
 import { CartContext, CartProvider } from "../../context/CartContext";
 import { IProduct } from "../../pages/product/IProduct";
+import { cartContext } from "../../store/cart";
 
 export function ProductCart(product: IProduct) {
+  const { dispatch } = useContext(cartContext);
+
+  function addProductToCart() {
+    dispatch({ type: "ADD_PRODUCT", payload: product });
+  }
+
   return (
     <div className={styles.productCartContainer}>
       <img src={product.image} alt={product.name} />
@@ -21,7 +28,7 @@ export function ProductCart(product: IProduct) {
             More Details
           </i>
         </Link>
-        <button>
+        <button onClick={addProductToCart}>
           <div>
             <MdAddShoppingCart size={16} color="#fff" />
           </div>
