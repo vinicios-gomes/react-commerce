@@ -1,7 +1,8 @@
+import Link from "next/link";
 import styles from "./styles.module.scss";
 import { IProduct } from "../../pages/index";
 import { formatPrice } from "../../utils/formaters";
-import { MdAddShoppingCart, MdShoppingCart } from "react-icons/md";
+import { MdAddShoppingCart, MdInfoOutline } from "react-icons/md";
 import { useContext } from "react";
 import { CartContext, CartProvider } from "../../context/CartContext";
 
@@ -14,6 +15,12 @@ export function ProductCart(product: IProduct) {
 
         <span>{formatPrice(product.price)}</span>
 
+        <Link href={`/product/${product.id}`}>
+          <i>
+            <MdInfoOutline size={16} color="#000" />
+            More Details
+          </i>
+        </Link>
         <button>
           <div>
             <MdAddShoppingCart size={16} color="#fff" />
