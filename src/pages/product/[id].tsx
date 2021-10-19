@@ -1,8 +1,8 @@
 import { GetServerSideProps } from "next";
 import { MdAddShoppingCart } from "react-icons/md";
-import { IProduct } from "..";
 import { getProductById } from "../../services/api";
 import { formatPrice } from "../../utils/formaters";
+import { IProduct } from "./IProduct";
 import style from "./product.module.scss";
 
 interface IProductProps {

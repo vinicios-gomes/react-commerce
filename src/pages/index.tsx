@@ -3,15 +3,7 @@ import Head from "next/head";
 import { ProductCart } from "../components/ProductCard";
 import { getAllProducts } from "../services/api";
 import styles from "./home.module.scss";
-
-export interface IProduct {
-  id: string;
-  name: string;
-  price: string;
-  image: string;
-  stock: number;
-  createdAt: string;
-}
+import { IProduct } from "./product/IProduct";
 
 export default function Home({ data }) {
   return (

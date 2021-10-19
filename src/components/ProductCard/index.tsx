@@ -1,10 +1,10 @@
 import Link from "next/link";
 import styles from "./styles.module.scss";
-import { IProduct } from "../../pages/index";
 import { formatPrice } from "../../utils/formaters";
 import { MdAddShoppingCart, MdInfoOutline } from "react-icons/md";
 import { useContext } from "react";
 import { CartContext, CartProvider } from "../../context/CartContext";
+import { IProduct } from "../../pages/product/IProduct";
 
 export function ProductCart(product: IProduct) {
   return (
