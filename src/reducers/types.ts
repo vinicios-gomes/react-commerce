@@ -1,7 +1,7 @@
 import { Dispatch } from "react";
 import { IProduct } from "../pages/product/IProduct";
 
-export interface GlobalStateInterface {
+export interface CartGlobalState {
   products: IProduct[];
 }
 
@@ -11,6 +11,6 @@ export type ActionType = {
 };
 
 export type ContextType = {
-  globalState: GlobalStateInterface;
+  globalState: CartGlobalState;
   dispatch: Dispatch<ActionType>;
 };
