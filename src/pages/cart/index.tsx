@@ -12,8 +12,12 @@ import style from "./cart.module.scss";
 export default function Cart() {
   const { cartState, dispatch } = useContext(cartContext);
 
-  function removeItemOfCart(id) {
+  function removeItemOfCart(id): void {
     dispatch({ type: TYPES.REMOVE_PRODUCT, payload: id });
+  }
+  function formatSubTotal(price: string, amount: number): string {
+    const subtotal = parseInt(price) * amount;
+    return formatPrice(subtotal);
   }
 
   return (
@@ -30,7 +34,7 @@ export default function Cart() {
           </thead>
           <tbody>
             {cartState.products.map((product) => (
-              <tr>
+              <tr key={product.id}>
                 <td>
                   <figure>
                     <img src={product.image}></img>
@@ -45,14 +49,16 @@ export default function Cart() {
                     <button type="button">
                       <MdRemoveCircleOutline size={20} color="#1c5d99" />
                     </button>
-                    <input type="text" readOnly value={1} />
+                    <input type="text" readOnly value={product.amount} />
                     <button type="button">
                       <MdAddCircleOutline size={20} color="#1c5d99" />
                     </button>
                   </div>
                 </td>
                 <td>
-                  <strong>{formatPrice(12)}</strong>
+                  <strong>
+                    {formatSubTotal(product.price, product.amount)}
+                  </strong>
                 </td>
                 <td>
                   <button

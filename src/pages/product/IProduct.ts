@@ -5,4 +5,5 @@ export interface IProduct {
   image: string;
   stock: number;
   createdAt: string;
+  amount?: number;
 }
