@@ -12,6 +12,12 @@ import style from "./cart.module.scss";
 export default function Cart() {
   const { cartState, dispatch } = useContext(cartContext);
 
+  let totalCartPrice = 0;
+  cartState.products.forEach((product) => {
+    totalCartPrice =
+      totalCartPrice + product.amount * parseFloat(product.price);
+  });
+
   function removeItemOfCart(id): void {
     dispatch({ type: TYPES.REMOVE_PRODUCT, payload: id });
   }
@@ -74,10 +80,10 @@ export default function Cart() {
         </table>
 
         <footer className={style.footer}>
-          <button type="submit">Continuar para o check-out</button>
+          <button type="submit">Continue to checkout</button>
           <div>
             <span>Total: </span>
-            <strong>{formatPrice(152.0)}</strong>
+            <strong>{formatPrice(totalCartPrice)}</strong>
           </div>
         </footer>
       </div>
