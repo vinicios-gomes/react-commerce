@@ -6,8 +6,14 @@ import { cartContext } from "../../store/cart";
 
 export function Header() {
   const { cartState } = useContext(cartContext);
-
-  const totalItemsInCart = cartState.products.length;
+  let totalItemsInCart = 0;
+  cartState.products.forEach((product) => {
+    if (product.amount) {
+      totalItemsInCart = totalItemsInCart + product.amount;
+    } else {
+      totalItemsInCart = totalItemsInCart + 1;
+    }
+  });
 
   return (
     <header className={styles.headerContainer}>
