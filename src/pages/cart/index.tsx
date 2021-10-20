@@ -4,6 +4,7 @@ import {
   MdDelete,
   MdRemoveCircleOutline,
 } from "react-icons/md";
+import { TYPES } from "../../reducers/types";
 import { cartContext } from "../../store/cart";
 import { formatPrice } from "../../utils/formaters";
 import style from "./cart.module.scss";
@@ -12,7 +13,7 @@ export default function Cart() {
   const { cartState, dispatch } = useContext(cartContext);
 
   function removeItemOfCart(id) {
-    dispatch({ type: "REMOVE_PRODUCT", payload: id });
+    dispatch({ type: TYPES.REMOVE_PRODUCT, payload: id });
   }
 
   return (
@@ -44,7 +45,7 @@ export default function Cart() {
                     <button type="button">
                       <MdRemoveCircleOutline size={20} color="#1c5d99" />
                     </button>
-                    <input type="text" readOnly value={product.amount} />
+                    <input type="text" readOnly value={1} />
                     <button type="button">
                       <MdAddCircleOutline size={20} color="#1c5d99" />
                     </button>

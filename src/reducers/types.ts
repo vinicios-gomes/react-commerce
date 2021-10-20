@@ -6,7 +6,7 @@ export interface CartGlobalState {
 }
 
 export type ActionType = {
-  type: string;
+  type: TYPES;
   payload?: any;
 };
 
@@ -14,3 +14,9 @@ export type ContextType = {
   cartState: CartGlobalState;
   dispatch: Dispatch<ActionType>;
 };
+
+export enum TYPES {
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
+  CLEAR_CART,
+}

@@ -3,15 +3,15 @@ import styles from "./styles.module.scss";
 import { formatPrice } from "../../utils/formaters";
 import { MdAddShoppingCart, MdInfoOutline } from "react-icons/md";
 import { useContext } from "react";
-import { CartContext, CartProvider } from "../../context/CartContext";
 import { IProduct } from "../../pages/product/IProduct";
 import { cartContext } from "../../store/cart";
+import { TYPES } from "../../reducers/types";
 
 export function ProductCart(product: IProduct) {
   const { dispatch } = useContext(cartContext);
 
   function addProductToCart() {
-    dispatch({ type: "ADD_PRODUCT", payload: product });
+    dispatch({ type: TYPES.ADD_PRODUCT, payload: product });
   }
 
   return (
