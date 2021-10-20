@@ -26,6 +26,20 @@ export default function Cart() {
     return formatPrice(subtotal);
   }
 
+  function decreaseQtdProduct(id, amount) {
+    dispatch({
+      type: TYPES.UPDATE_AMOUNT_PRODUCT_IN_CART,
+      payload: { id, amount: amount - 1 },
+    });
+  }
+
+  function increaseQtdProduct(id, amount) {
+    dispatch({
+      type: TYPES.UPDATE_AMOUNT_PRODUCT_IN_CART,
+      payload: { id, amount: amount + 1 },
+    });
+  }
+
   return (
     <>
       <div className={style.cartContainer}>
@@ -52,11 +66,21 @@ export default function Cart() {
                 </td>
                 <td>
                   <div>
-                    <button type="button">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        decreaseQtdProduct(product.id, product.amount)
+                      }
+                    >
                       <MdRemoveCircleOutline size={20} color="#1c5d99" />
                     </button>
                     <input type="text" readOnly value={product.amount} />
-                    <button type="button">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        increaseQtdProduct(product.id, product.amount)
+                      }
+                    >
                       <MdAddCircleOutline size={20} color="#1c5d99" />
                     </button>
                   </div>

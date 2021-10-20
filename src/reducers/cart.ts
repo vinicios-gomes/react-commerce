@@ -43,5 +43,33 @@ export const cartReducer = (
       return { ...state, products: filteredProducts };
     case TYPES.CLEAR_CART:
       return { ...state, products: [] };
+    case TYPES.UPDATE_AMOUNT_PRODUCT_IN_CART:
+      const productUpdate = state.products.filter(
+        (product) => product.id === action.payload.id
+      )[0];
+
+      const arrayOfProducts = state.products.filter(
+        (product) => product.id !== action.payload.id
+      );
+
+      if (productUpdate) {
+        if (productUpdate.amount <= 0) {
+          const productIndex = state.products.findIndex(
+            (p) => p.id === action.payload.id
+          );
+          if (productIndex >= 0) {
+            const newArr = state.products.slice().splice(productIndex, 1);
+            return { ...state, products: newArr };
+          }
+        }
+
+        if (productUpdate.amount > 0) {
+          productUpdate.amount = action.payload.amount;
+          return {
+            ...state,
+            products: [...arrayOfProducts, productUpdate],
+          };
+        }
+      }
   }
 };
