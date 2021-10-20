@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import { useContext } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
+import { TYPES } from "../../reducers/types";
 import { getProductById } from "../../services/api";
 import { cartContext } from "../../store/cart";
 import { formatPrice } from "../../utils/formaters";
@@ -15,7 +16,7 @@ export default function Product({ products }: IProductProps) {
   const { dispatch } = useContext(cartContext);
 
   function addProductToCart() {
-    dispatch({ type: "ADD_PRODUCT", payload: products[0] });
+    dispatch({ type: TYPES.ADD_PRODUCT, payload: products[0] });
   }
 
   return (
