@@ -1,6 +1,8 @@
 import { GetServerSideProps } from "next";
+import { useContext } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import { getProductById } from "../../services/api";
+import { cartContext } from "../../store/cart";
 import { formatPrice } from "../../utils/formaters";
 import { IProduct } from "./IProduct";
 import style from "./product.module.scss";
@@ -10,6 +12,12 @@ interface IProductProps {
 }
 
 export default function Product({ products }: IProductProps) {
+  const { dispatch } = useContext(cartContext);
+
+  function addProductToCart() {
+    dispatch({ type: "ADD_PRODUCT", payload: products[0] });
+  }
+
   return (
     <>
       <div className={style.container}>
@@ -23,7 +31,7 @@ export default function Product({ products }: IProductProps) {
               <span>
                 Price: <strong>{formatPrice(product.price)}</strong>
               </span>
-              <button>
+              <button onClick={addProductToCart}>
                 <div>
                   <MdAddShoppingCart size={16} color="#fff" />
                 </div>

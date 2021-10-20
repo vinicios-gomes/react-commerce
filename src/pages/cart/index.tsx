@@ -1,11 +1,20 @@
+import { useContext } from "react";
 import {
   MdAddCircleOutline,
   MdDelete,
   MdRemoveCircleOutline,
 } from "react-icons/md";
+import { cartContext } from "../../store/cart";
 import { formatPrice } from "../../utils/formaters";
 import style from "./cart.module.scss";
+
 export default function Cart() {
+  const { cartState, dispatch } = useContext(cartContext);
+
+  function removeItemOfCart(id) {
+    dispatch({ type: "REMOVE_PRODUCT", payload: id });
+  }
+
   return (
     <>
       <div className={style.cartContainer}>
@@ -19,36 +28,41 @@ export default function Cart() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <figure>
-                  <img src="img"></img>
-                </figure>
-              </td>
-              <td>
-                <strong>Product Tilte</strong>
-                <span>{formatPrice(144.22)}</span>
-              </td>
-              <td>
-                <div>
-                  <button type="button">
-                    <MdRemoveCircleOutline size={20} color="#1c5d99" />
+            {cartState.products.map((product) => (
+              <tr>
+                <td>
+                  <figure>
+                    <img src={product.image}></img>
+                  </figure>
+                </td>
+                <td>
+                  <strong>{product.name}</strong>
+                  <span>{formatPrice(product.price)}</span>
+                </td>
+                <td>
+                  <div>
+                    <button type="button">
+                      <MdRemoveCircleOutline size={20} color="#1c5d99" />
+                    </button>
+                    <input type="text" readOnly value={product.amount} />
+                    <button type="button">
+                      <MdAddCircleOutline size={20} color="#1c5d99" />
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <strong>{formatPrice(12)}</strong>
+                </td>
+                <td>
+                  <button
+                    onClick={() => removeItemOfCart(product.id)}
+                    type="button"
+                  >
+                    <MdDelete size={20} color="#1c5d99" />
                   </button>
-                  <input type="text" readOnly value="1" />
-                  <button type="button">
-                    <MdAddCircleOutline size={20} color="#1c5d99" />
-                  </button>
-                </div>
-              </td>
-              <td>
-                <strong>{formatPrice(12)}</strong>
-              </td>
-              <td>
-                <button type="button">
-                  <MdDelete size={20} color="#1c5d99" />
-                </button>
-              </td>
-            </tr>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
 
