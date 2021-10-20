@@ -37,8 +37,11 @@ export const cartReducer = (
 
       return { ...state, products: [...state.products, action.payload] };
     case TYPES.REMOVE_PRODUCT:
-      return state.products.filter((product) => product.id !== action.payload);
+      const filteredProducts = state.products.filter(
+        (product) => product.id !== action.payload
+      );
+      return { ...state, products: filteredProducts };
     case TYPES.CLEAR_CART:
-      return { products: [] };
+      return { ...state, products: [] };
   }
 };
