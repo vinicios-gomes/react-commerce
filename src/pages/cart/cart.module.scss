@@ -37,6 +37,11 @@
     }
     tbody td {
       padding: 12px;
+
+      figure {
+        display: flex;
+        justify-content: center;
+      }
     }
   }
 
