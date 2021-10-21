@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { CartStore } from "../../store/cart";
+import { CartProvider } from "../../store/cart";
 import { cartContext } from "../../store/cart";
 import { Header } from ".";
 import { IProduct } from "../../pages/product/IProduct";
@@ -8,9 +8,9 @@ import { CartGlobalState } from "../../reducers/types";
 describe("Header Component", () => {
   it("render correctly", () => {
     render(
-      <CartStore>
+      <CartProvider>
         <Header />
-      </CartStore>
+      </CartProvider>
     );
     expect(screen.getByAltText("React Commerce")).toBeInTheDocument();
     expect(screen.getByText("My cart")).toBeInTheDocument();
@@ -18,9 +18,9 @@ describe("Header Component", () => {
 
   it("Should be showing 0 if there is nothing in the cart", () => {
     const { getByText } = render(
-      <CartStore>
+      <CartProvider>
         <Header />
-      </CartStore>
+      </CartProvider>
     );
     expect(getByText("0")).toBeInTheDocument();
   });

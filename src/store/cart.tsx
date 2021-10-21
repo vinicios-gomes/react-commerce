@@ -2,7 +2,11 @@ import { ReactElement, ReactNode, useReducer, createContext } from "react";
 import { cartReducer } from "../reducers/cart";
 import { CartGlobalState, ContextType } from "../reducers/types";
 
-export function CartStore({ children }: { children: ReactNode }): ReactElement {
+interface CartProviderProps {
+  children: ReactNode;
+}
+
+export function CartProvider({ children }: CartProviderProps): ReactElement {
   const [cartState, dispatch] = useReducer(cartReducer, initialState);
 
   return (
