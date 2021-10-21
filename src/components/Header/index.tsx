@@ -7,13 +7,11 @@ import { cartContext } from "../../hooks/cart";
 export function Header() {
   const { cartState } = useContext(cartContext);
   let totalItemsInCart = 0;
-  cartState.products.forEach((product) => {
-    if (product.amount) {
-      totalItemsInCart = totalItemsInCart + product.amount;
-    } else {
-      totalItemsInCart = totalItemsInCart + 1;
-    }
-  });
+
+  const cartTotal = cartState.products.reduce(
+    (prev, cur) => prev + cur.amount,
+    0
+  );
 
   return (
     <header className={styles.headerContainer}>
@@ -25,10 +23,10 @@ export function Header() {
         <div className={styles.headerCart}>
           <div>
             <strong>My cart</strong>
-            <span>{totalItemsInCart} Products</span>
+            <span>{cartTotal} Products</span>
           </div>
           <MdShoppingCart size={38} color="#fff" />
-          <span>{totalItemsInCart}</span>
+          <span>{cartTotal}</span>
         </div>
       </Link>
     </header>
