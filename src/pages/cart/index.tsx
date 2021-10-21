@@ -12,6 +12,10 @@ import style from "./cart.module.scss";
 export default function Cart() {
   const { cartState, dispatch } = useContext(cartContext);
 
+  const sortProductList = cartState.products.sort(
+    (a, b) => parseFloat(a.id) - parseFloat(b.id)
+  );
+
   let totalCartPrice = 0;
   cartState.products.forEach((product) => {
     totalCartPrice =
@@ -21,6 +25,7 @@ export default function Cart() {
   function removeItemOfCart(id): void {
     dispatch({ type: TYPES.REMOVE_PRODUCT, payload: id });
   }
+
   function formatSubTotal(price: string, amount: number): string {
     const subtotal = parseInt(price) * amount;
     return formatPrice(subtotal);
@@ -53,7 +58,7 @@ export default function Cart() {
             </tr>
           </thead>
           <tbody>
-            {cartState.products.map((product) => (
+            {sortProductList.map((product) => (
               <tr key={product.id}>
                 <td>
                   <figure>
