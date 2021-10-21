@@ -5,7 +5,7 @@ import {
   MdRemoveCircleOutline,
 } from "react-icons/md";
 import { TYPES } from "../../reducers/types";
-import { cartContext } from "../../store/cart";
+import { cartContext } from "../../hooks/cart";
 import { formatPrice } from "../../utils/formaters";
 import style from "./cart.module.scss";
 

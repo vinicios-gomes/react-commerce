@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import { TYPES } from "../../reducers/types";
 import { getProductById } from "../../services/api";
-import { cartContext } from "../../store/cart";
+import { cartContext } from "../../hooks/cart";
 import { formatPrice } from "../../utils/formaters";
 import { IProduct } from "./IProduct";
 import style from "./product.module.scss";

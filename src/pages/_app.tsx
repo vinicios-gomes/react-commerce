@@ -1,15 +1,15 @@
 import { AppProps } from "next/app";
 import { Header } from "../components/Header";
-import { CartStore } from "../store/cart";
+import { CartProvider } from "../hooks/cart";
 import "../styles/global.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <CartStore>
+      <CartProvider>
         <Header />
         <Component {...pageProps} />
-      </CartStore>
+      </CartProvider>
     </>
   );
 }

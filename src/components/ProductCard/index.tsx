@@ -4,7 +4,7 @@ import { formatPrice } from "../../utils/formaters";
 import { MdAddShoppingCart, MdInfoOutline } from "react-icons/md";
 import { useContext } from "react";
 import { IProduct } from "../../pages/product/IProduct";
-import { cartContext } from "../../store/cart";
+import { cartContext } from "../../hooks/cart";
 import { TYPES } from "../../reducers/types";
 
 export function ProductCart(product: IProduct) {
@@ -28,7 +28,7 @@ export function ProductCart(product: IProduct) {
             More Details
           </i>
         </Link>
-        <button onClick={addProductToCart}>
+        <button data-testid="add-product" onClick={addProductToCart}>
           <div>
             <MdAddShoppingCart size={16} color="#fff" />
           </div>

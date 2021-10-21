@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import { CartProvider } from "../../store/cart";
-import { cartContext } from "../../store/cart";
+import { CartProvider } from "../../hooks/cart";
+import { cartContext } from "../../hooks/cart";
 import { Header } from ".";
 import { IProduct } from "../../pages/product/IProduct";
 import { CartGlobalState } from "../../reducers/types";

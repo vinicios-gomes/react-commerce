@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import Link from "next/link";
 import { MdShoppingCart } from "react-icons/md";
 import { useContext } from "react";
-import { cartContext } from "../../store/cart";
+import { cartContext } from "../../hooks/cart";
 
 export function Header() {
   const { cartState } = useContext(cartContext);
