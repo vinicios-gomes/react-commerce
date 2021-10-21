@@ -56,7 +56,7 @@ export const cartReducer = (
       )[0];
 
       if (!productUpdate) {
-        console.error("An error has occurred when changing the amount!");
+        return console.error("An error has occurred when changing the amount!");
       }
 
       if (productUpdate.amount > 0) {
