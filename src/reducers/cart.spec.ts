@@ -194,4 +194,57 @@ describe("Cart Reducer", () => {
 
     expect(state.products).toStrictEqual([productUpdated]);
   });
+
+  it("Should be able to decrement product amount in the cart", () => {
+    const cartInitialState: CartGlobalState = {
+      products: [
+        {
+          createdAt: "2021-03-03",
+          id: "1",
+          image: "https://localhost/image",
+          name: "Mock Product",
+          price: "232.00",
+          stock: 23,
+          amount: 2,
+        },
+      ],
+    };
+
+    const product: IProduct = {
+      createdAt: "2021-03-03",
+      id: "1",
+      image: "https://localhost/image",
+      name: "Mock Product",
+      price: "232.00",
+      stock: 23,
+      amount: 2,
+    };
+
+    const { result } = renderHook(() =>
+      useReducer(cartReducer, cartInitialState)
+    );
+
+    const [, dispatch] = result.current;
+
+    act(() => {
+      dispatch({
+        type: TYPES.UPDATE_AMOUNT_PRODUCT_IN_CART,
+        payload: { id: "1", amount: product.amount - 1 },
+      });
+    });
+
+    const productUpdated: IProduct = {
+      createdAt: "2021-03-03",
+      id: "1",
+      image: "https://localhost/image",
+      name: "Mock Product",
+      price: "232.00",
+      stock: 23,
+      amount: 1,
+    };
+
+    const [state] = result.current;
+
+    expect(state.products).toStrictEqual([productUpdated]);
+  });
 });
