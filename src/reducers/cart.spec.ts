@@ -34,4 +34,30 @@ describe("Cart Reducer", () => {
     const [state] = result.current;
     expect(state.products).toStrictEqual([product]);
   });
+
+  it("Should be able to update amount if add a identical product in the cart", () => {
+    const { result } = renderHook(() =>
+      useReducer(cartReducer, cartInitialState)
+    );
+
+    const [, dispatch] = result.current;
+
+    act(() => {
+      dispatch({ type: TYPES.ADD_PRODUCT, payload: product });
+      dispatch({ type: TYPES.ADD_PRODUCT, payload: product });
+    });
+
+    const updatedProduct: IProduct = {
+      createdAt: "2021-03-03",
+      id: "1",
+      image: "https://localhost/image",
+      name: "Mock Product",
+      price: "232.00",
+      stock: 23,
+      amount: 2,
+    };
+
+    const [state] = result.current;
+    expect(state.products).toStrictEqual([updatedProduct]);
+  });
 });
