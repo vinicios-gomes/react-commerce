@@ -60,4 +60,20 @@ describe("Cart Reducer", () => {
     const [state] = result.current;
     expect(state.products).toStrictEqual([updatedProduct]);
   });
+
+  it("should be able to remove product in the cart", () => {
+    const { result } = renderHook(() =>
+      useReducer(cartReducer, cartInitialState)
+    );
+
+    const [, dispatch] = result.current;
+
+    act(() => {
+      dispatch({ type: TYPES.REMOVE_PRODUCT, payload: "1" });
+    });
+
+    const [state] = result.current;
+
+    expect(state.products).toStrictEqual([]);
+  });
 });
