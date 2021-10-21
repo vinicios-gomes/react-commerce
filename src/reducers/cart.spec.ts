@@ -112,4 +112,33 @@ describe("Cart Reducer", () => {
 
     expect(state.products).toStrictEqual([]);
   });
+
+  it("Should be able to clear cart", () => {
+    const cartInitialState: CartGlobalState = {
+      products: [
+        {
+          createdAt: "2021-03-03",
+          id: "1",
+          image: "https://localhost/image",
+          name: "Mock Product",
+          price: "232.00",
+          stock: 23,
+          amount: 1,
+        },
+      ],
+    };
+    const { result } = renderHook(() =>
+      useReducer(cartReducer, cartInitialState)
+    );
+
+    const [, dispatch] = result.current;
+
+    act(() => {
+      dispatch({ type: TYPES.CLEAR_CART });
+    });
+
+    const [state] = result.current;
+
+    expect(state.products).toStrictEqual([]);
+  });
 });
