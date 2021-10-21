@@ -34,6 +34,43 @@ describe("Cart Reducer", () => {
     expect(state.products).toStrictEqual([product]);
   });
 
+  it("Should be able to add key amount in product if not have", () => {
+    const cartInitialState: CartGlobalState = {
+      products: [],
+    };
+    const product: IProduct = {
+      createdAt: "2021-03-03",
+      id: "1",
+      image: "https://localhost/image",
+      name: "Mock Product",
+      price: "232.00",
+      stock: 23,
+    };
+
+    const { result } = renderHook(() =>
+      useReducer(cartReducer, cartInitialState)
+    );
+
+    const [, dispatch] = result.current;
+
+    act(() => {
+      dispatch({ type: TYPES.ADD_PRODUCT, payload: product });
+    });
+
+    const [state] = result.current;
+    expect(state.products).toStrictEqual([
+      {
+        createdAt: "2021-03-03",
+        id: "1",
+        image: "https://localhost/image",
+        name: "Mock Product",
+        price: "232.00",
+        stock: 23,
+        amount: 1,
+      },
+    ]);
+  });
+
   it("Should be able to update amount if add a identical product in the cart", () => {
     const cartInitialState: CartGlobalState = {
       products: [
