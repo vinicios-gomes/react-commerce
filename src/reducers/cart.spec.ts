@@ -6,21 +6,20 @@ import { IProduct } from "../pages/product/IProduct";
 import { act } from "react-dom/test-utils";
 
 describe("Cart Reducer", () => {
-  const product: IProduct = {
-    createdAt: "2021-03-03",
-    id: "1",
-    image: "https://localhost/image",
-    name: "Mock Product",
-    price: "232.00",
-    stock: 23,
-    amount: 1,
-  };
-
-  const cartInitialState: CartGlobalState = {
-    products: [],
-  };
-
   it("Should be able to add product in Cart", async () => {
+    const cartInitialState: CartGlobalState = {
+      products: [],
+    };
+    const product: IProduct = {
+      createdAt: "2021-03-03",
+      id: "1",
+      image: "https://localhost/image",
+      name: "Mock Product",
+      price: "232.00",
+      stock: 23,
+      amount: 1,
+    };
+
     const { result } = renderHook(() =>
       useReducer(cartReducer, cartInitialState)
     );
@@ -36,6 +35,30 @@ describe("Cart Reducer", () => {
   });
 
   it("Should be able to update amount if add a identical product in the cart", () => {
+    const cartInitialState: CartGlobalState = {
+      products: [
+        {
+          createdAt: "2021-03-03",
+          id: "1",
+          image: "https://localhost/image",
+          name: "Mock Product",
+          price: "232.00",
+          stock: 23,
+          amount: 1,
+        },
+      ],
+    };
+
+    const product: IProduct = {
+      createdAt: "2021-03-03",
+      id: "1",
+      image: "https://localhost/image",
+      name: "Mock Product",
+      price: "232.00",
+      stock: 23,
+      amount: 1,
+    };
+
     const { result } = renderHook(() =>
       useReducer(cartReducer, cartInitialState)
     );
@@ -43,7 +66,6 @@ describe("Cart Reducer", () => {
     const [, dispatch] = result.current;
 
     act(() => {
-      dispatch({ type: TYPES.ADD_PRODUCT, payload: product });
       dispatch({ type: TYPES.ADD_PRODUCT, payload: product });
     });
 
@@ -62,6 +84,20 @@ describe("Cart Reducer", () => {
   });
 
   it("should be able to remove product in the cart", () => {
+    const cartInitialState: CartGlobalState = {
+      products: [
+        {
+          createdAt: "2021-03-03",
+          id: "1",
+          image: "https://localhost/image",
+          name: "Mock Product",
+          price: "232.00",
+          stock: 23,
+          amount: 1,
+        },
+      ],
+    };
+
     const { result } = renderHook(() =>
       useReducer(cartReducer, cartInitialState)
     );
