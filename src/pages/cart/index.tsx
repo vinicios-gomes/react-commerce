@@ -73,15 +73,22 @@ export default function Cart() {
                   <div>
                     <button
                       type="button"
+                      data-testid="cart-decrement-product"
                       onClick={() =>
                         decreaseQtdProduct(product.id, product.amount)
                       }
                     >
                       <MdRemoveCircleOutline size={20} color="#1c5d99" />
                     </button>
-                    <input type="text" readOnly value={product.amount} />
+                    <input
+                      type="text"
+                      readOnly
+                      data-testid="product-amount"
+                      value={product.amount}
+                    />
                     <button
                       type="button"
+                      data-testid="cart-increment-product"
                       onClick={() =>
                         increaseQtdProduct(product.id, product.amount)
                       }
