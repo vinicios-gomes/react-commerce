@@ -20,7 +20,9 @@ export function ProductCart(product: IProduct) {
       <header>
         <strong>{product.name}</strong>
 
-        <span>{formatPrice(product.price)}</span>
+        <span data-testid="product-card-price">
+          {formatPrice(product.price)}
+        </span>
 
         <Link href={`/product/${product.id}`}>
           <i>
