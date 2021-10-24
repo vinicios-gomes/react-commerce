@@ -23,7 +23,7 @@ export default function Product({ products }: IProductProps) {
     <>
       <div className={style.container}>
         {products.map((product) => (
-          <div className={style.product}>
+          <div key={product.id} className={style.product}>
             <img src={product.image} alt={product.name} />
 
             <div className={style.description}>
@@ -32,7 +32,10 @@ export default function Product({ products }: IProductProps) {
               <span>
                 Price: <strong>{formatPrice(product.price)}</strong>
               </span>
-              <button onClick={addProductToCart}>
+              <button
+                data-testid="add-product-to-cart"
+                onClick={addProductToCart}
+              >
                 <div>
                   <MdAddShoppingCart size={16} color="#fff" />
                 </div>
