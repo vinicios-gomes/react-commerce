@@ -5,7 +5,11 @@ import { getAllProducts } from "../services/api";
 import styles from "./home.module.scss";
 import { IProduct } from "./product/IProduct";
 
-export default function Home({ data }) {
+interface HomeProps {
+  products: IProduct[];
+}
+
+export default function Home({ products }: HomeProps) {
   return (
     <>
       <Head>
@@ -13,7 +17,7 @@ export default function Home({ data }) {
       </Head>
 
       <div className={styles.listProducts}>
-        {data.map((product: IProduct) => (
+        {products.map((product: IProduct) => (
           <ProductCart
             key={product.id}
             name={product.name}
@@ -30,11 +34,11 @@ export default function Home({ data }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await getAllProducts();
+  const products = await getAllProducts();
 
   return {
     props: {
-      data,
+      products,
     },
     revalidate: 60 * 60 * 24,
   };
