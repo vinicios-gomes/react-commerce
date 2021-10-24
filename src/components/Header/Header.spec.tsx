@@ -17,27 +17,46 @@ describe("Header Component", () => {
   });
 
   it("Should be showing 0 if there is nothing in the cart", () => {
-    const { getByText } = render(
-      <CartProvider>
+    const initialState: CartGlobalState = {
+      products: [],
+    };
+
+    render(
+      <cartContext.Provider
+        value={{
+          cartState: initialState,
+          dispatch: jest.fn(),
+        }}
+      >
         <Header />
-      </CartProvider>
+      </cartContext.Provider>
     );
-    expect(getByText("0")).toBeInTheDocument();
+
+    expect(screen.getByText("0")).toBeInTheDocument();
   });
 
   it("Should be showing the amount of the products in the cart", () => {
-    const product: IProduct = {
-      createdAt: "2021-03-03",
-      id: "1",
-      image: "https://localhost/image",
-      name: "Mock Product",
-      price: "232.00",
-      stock: 23,
-      amount: 1,
-    };
-
     const initialState: CartGlobalState = {
-      products: [product],
+      products: [
+        {
+          createdAt: "2021-03-03",
+          id: "1",
+          image: "https://localhost/image",
+          name: "Mock Product",
+          price: "232.00",
+          stock: 23,
+          amount: 1,
+        },
+        {
+          createdAt: "2021-03-03",
+          id: "2",
+          image: "https://localhost/image",
+          name: "Mock Product",
+          price: "232.00",
+          stock: 23,
+          amount: 3,
+        },
+      ],
     };
 
     render(
@@ -48,6 +67,6 @@ describe("Header Component", () => {
       </cartContext.Provider>
     );
 
-    expect(screen.getByText("1")).toBeInTheDocument();
+    expect(screen.getByText("4")).toBeInTheDocument();
   });
 });
