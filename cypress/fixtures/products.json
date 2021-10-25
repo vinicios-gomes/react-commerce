@@ -1,0 +1,20 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "createdAt": "2019-09-02T12:58:54.103Z",
+      "name": "My Mocked Product",
+      "price": "289.00",
+      "image": "http://lorempixel.com/640/480/food",
+      "stock": 65171
+    },
+    {
+      "id": "2",
+      "createdAt": "2019-09-02T12:58:54.103Z",
+      "name": "My Mocked Product 2",
+      "price": "281.00",
+      "image": "http://lorempixel.com/640/480/food",
+      "stock": 65171
+    }
+  ]
+}
