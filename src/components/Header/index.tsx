@@ -20,10 +20,10 @@ export function Header() {
       </Link>
 
       <Link href="/cart">
-        <div className={styles.headerCart}>
+        <div data-cy="header-cart-link" className={styles.headerCart}>
           <div>
             <strong>My cart</strong>
-            <span>{cartTotal} Products</span>
+            <span data-cy="header-cart-total">{cartTotal} Products</span>
           </div>
           <MdShoppingCart size={38} color="#fff" />
           <span>{cartTotal}</span>

@@ -48,7 +48,7 @@ export default function Cart() {
   return (
     <>
       <div className={style.cartContainer}>
-        <table>
+        <table data-cy="product-table">
           <thead>
             <tr>
               <th />
@@ -59,7 +59,7 @@ export default function Cart() {
           </thead>
           <tbody>
             {sortProductList.map((product) => (
-              <tr key={product.id}>
+              <tr data-cy="product-table-list-item" key={product.id}>
                 <td>
                   <figure>
                     <img src={product.image}></img>
@@ -98,7 +98,7 @@ export default function Cart() {
                   </div>
                 </td>
                 <td>
-                  <strong>
+                  <strong data-cy="cart-subtotal">
                     {formatSubTotal(product.price, product.amount)}
                   </strong>
                 </td>
@@ -116,7 +116,9 @@ export default function Cart() {
         </table>
 
         <footer className={style.footer}>
-          <button type="submit">Continue to checkout</button>
+          <button data-cy="cart-continue-checkout" type="submit">
+            Continue to checkout
+          </button>
           <div>
             <span>Total: </span>
             <strong>{formatPrice(totalCartPrice)}</strong>

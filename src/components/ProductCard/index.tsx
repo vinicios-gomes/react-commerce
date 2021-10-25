@@ -15,7 +15,7 @@ export function ProductCart(product: IProduct) {
   }
 
   return (
-    <div className={styles.productCartContainer}>
+    <div data-cy="product-card" className={styles.productCartContainer}>
       <img src={product.image} alt={product.name} />
       <header>
         <strong>{product.name}</strong>
