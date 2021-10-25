@@ -131,3 +131,36 @@
     }
   }
 }
+
+.emptyContent {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  height: 100vh;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  span {
+    font-size: 1.2rem;
+    font-weight: 450;
+    margin: 12px 0px 28px;
+  }
+
+  a {
+    background: rgb(28, 93, 153);
+    color: rgb(255, 255, 255);
+    border: 0px;
+    border-radius: 4px;
+    padding: 12px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background 10ms ease-in-out 0s;
+    text-decoration: none;
+    display: inline-block;
+  }
+}
