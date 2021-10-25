@@ -23,13 +23,17 @@ export default function Product({ products }: IProductProps) {
     <>
       <div className={style.container}>
         {products.map((product) => (
-          <div key={product.id} className={style.product}>
+          <div
+            data-cy="product-data"
+            key={product.id}
+            className={style.product}
+          >
             <img src={product.image} alt={product.name} />
 
             <div className={style.description}>
               <h1>{product.name}</h1>
-              <span>Stock: {product.stock}</span>
-              <span>
+              <span data-cy="product-stock">Stock: {product.stock}</span>
+              <span data-cy="product-price">
                 Price: <strong>{formatPrice(product.price)}</strong>
               </span>
               <button
