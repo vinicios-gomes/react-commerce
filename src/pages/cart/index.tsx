@@ -121,7 +121,9 @@ export default function Cart() {
           </button>
           <div>
             <span>Total: </span>
-            <strong>{formatPrice(totalCartPrice)}</strong>
+            <strong data-testid="cart-total">
+              {formatPrice(totalCartPrice)}
+            </strong>
           </div>
         </footer>
       </div>
