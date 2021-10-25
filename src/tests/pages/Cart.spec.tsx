@@ -152,4 +152,23 @@ describe("Cart Page", () => {
 
     expect((productAmountUpdate as HTMLInputElement).value).toBe("1");
   });
+  it("Should display the empty content if there ate no items in the cart", () => {
+    const initialState: CartGlobalState = {
+      products: [],
+    };
+
+    render(
+      <cartContext.Provider
+        value={{
+          cartState: initialState,
+          dispatch: jest.fn(),
+        }}
+      >
+        <Cart />
+      </cartContext.Provider>
+    );
+
+    expect(screen.getByText("Oops...")).toBeInTheDocument();
+    expect(screen.getByText("Start shopping!")).toBeInTheDocument();
+  });
 });
