@@ -17,6 +17,11 @@ export const cartReducer = (
 
       if (productExists) {
         if (productExists.amount) {
+          if (productExists.stock <= productExists.amount) {
+            return console.error(
+              "Sorry, you can't add more items, out of stock"
+            );
+          }
           return {
             ...state,
             products: [
@@ -57,6 +62,12 @@ export const cartReducer = (
 
       if (!productUpdate) {
         return console.error("An error has occurred when changing the amount!");
+      }
+
+      if (productUpdate.stock <= productUpdate.amount) {
+        return console.error(
+          "Sorry, you can't update the amount, out of stock"
+        );
       }
 
       if (productUpdate.amount > 0) {

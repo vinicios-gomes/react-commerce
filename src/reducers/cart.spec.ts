@@ -277,6 +277,98 @@ describe("Cart Reducer", () => {
     );
   });
 
+  it("Cannot update quantity to a value greater than stock", () => {
+    const spyConsoleError = jest
+      .spyOn(console, "error")
+      .mockImplementation(() => {});
+    const cartInitialState: CartGlobalState = {
+      products: [
+        {
+          createdAt: "2021-03-03",
+          id: "1",
+          image: "https://localhost/image",
+          name: "Mock Product",
+          price: "232.00",
+          stock: 2,
+          amount: 2,
+        },
+      ],
+    };
+
+    const product: IProduct = {
+      createdAt: "2021-03-03",
+      id: "1",
+      image: "https://localhost/image",
+      name: "Mock Product",
+      price: "232.00",
+      stock: 23,
+      amount: 2,
+    };
+
+    const { result } = renderHook(() =>
+      useReducer(cartReducer, cartInitialState)
+    );
+
+    const [, dispatch] = result.current;
+
+    act(() => {
+      dispatch({
+        type: TYPES.UPDATE_AMOUNT_PRODUCT_IN_CART,
+        payload: { id: "1", amount: product.amount + 1 },
+      });
+    });
+
+    expect(spyConsoleError.mock.calls[0][0]).toEqual(
+      "Sorry, you can't update the amount, out of stock"
+    );
+  });
+
+  it("You cannot add a quantity of product greater than the product's stock", () => {
+    const spyConsoleError = jest
+      .spyOn(console, "error")
+      .mockImplementation(() => {});
+    const cartInitialState: CartGlobalState = {
+      products: [
+        {
+          createdAt: "2021-03-03",
+          id: "1",
+          image: "https://localhost/image",
+          name: "Mock Product",
+          price: "232.00",
+          stock: 2,
+          amount: 2,
+        },
+      ],
+    };
+
+    const product: IProduct = {
+      createdAt: "2021-03-03",
+      id: "1",
+      image: "https://localhost/image",
+      name: "Mock Product",
+      price: "232.00",
+      stock: 23,
+      amount: 1,
+    };
+
+    const { result } = renderHook(() =>
+      useReducer(cartReducer, cartInitialState)
+    );
+
+    const [, dispatch] = result.current;
+
+    act(() => {
+      dispatch({
+        type: TYPES.ADD_PRODUCT,
+        payload: product,
+      });
+    });
+
+    expect(spyConsoleError.mock.calls[0][0]).toEqual(
+      "Sorry, you can't add more items, out of stock"
+    );
+  });
+
   it("Should be able to decrement product amount in the cart", () => {
     const cartInitialState: CartGlobalState = {
       products: [
