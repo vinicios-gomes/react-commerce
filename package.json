@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "cy:open": "cypress open",
     "cy:run": "cypress run"
   },

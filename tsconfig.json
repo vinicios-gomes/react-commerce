@@ -1,15 +1,8 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext",
-      "es5"
-    ],
-    "types": [
-      "cypress"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["cypress", "jest", "@testing-library/jest-dom"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -28,7 +21,5 @@
     "**/*.tsx",
     "cypress/integration/**/*.spec.js"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
